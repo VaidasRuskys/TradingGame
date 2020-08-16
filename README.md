@@ -1,1 +1,1 @@
-# TradingGame
+# TradingGame public repository
