@@ -12,6 +12,9 @@ RUN wget https://get.symfony.com/cli/installer -O - | bash \
 
 COPY ./code/ /var/www/html/trading_game/
 
+RUN cd /var/www/html/trading_game \
+   && composer install
+
 EXPOSE 8000
 
 VOLUME var/www/html/trading_game/
