@@ -1,0 +1,11 @@
+version: '3'
+services:
+  trading_game:
+    build: .
+    ports:
+      - '8000:8000'
+    volumes:
+      - './code/:/var/www/html/trading_game/'
+    environment:
+      - COMPOSER_MEMORY_LIMIT=-1
+    command: ["symfony", "server:start"]
