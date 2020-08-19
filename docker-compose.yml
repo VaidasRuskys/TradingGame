@@ -8,4 +8,3 @@ services:
       - './code/:/var/www/html/trading_game/'
     environment:
       - COMPOSER_MEMORY_LIMIT=-1
-    command: ["symfony", "server:start"]

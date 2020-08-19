@@ -18,3 +18,6 @@ RUN cd /var/www/html/trading_game \
 EXPOSE 8000
 
 VOLUME var/www/html/trading_game/
+
+CMD cd /var/www/html/trading_game \
+    && symfony server:start
