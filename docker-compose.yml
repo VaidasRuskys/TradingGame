@@ -8,3 +8,20 @@ services:
       - './code/:/var/www/html/trading_game/'
     environment:
       - COMPOSER_MEMORY_LIMIT=-1
+    networks:
+      - mysql_network
+  mysql_container:
+    image: 'mysql:5.7'
+    command: --innodb_use_native_aio=0
+    environment:
+      - MYSQL_ROOT_PASSWORD=trading_game
+      - MYSQL_DATABASE=trading_game
+    ports:
+      - '3306:3306'
+    networks:
+      - mysql_network
+    volumes:
+      - './mysql:/var/lib/mysql'
+networks:
+  mysql_network:
+    driver: bridge
