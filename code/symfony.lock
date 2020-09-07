@@ -84,6 +84,9 @@
     "egulias/email-validator": {
         "version": "2.1.19"
     },
+    "finnhub/client": {
+        "version": "1.1.1"
+    },
     "monolog/monolog": {
         "version": "2.1.1"
     },
