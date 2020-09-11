@@ -1,2 +1,8 @@
-- name: easy configurable php-stan
-  uses: zalexki/phpstan-action@0.1
+on: push
+name: Php stan
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+    - name: easy configurable php-stan
+      uses: zalexki/phpstan-action@0.1
