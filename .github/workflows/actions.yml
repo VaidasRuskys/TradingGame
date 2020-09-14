@@ -1,0 +1,15 @@
+on: push
+name: Php stan
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: php-actions/composer@v1 # or alternative dependency management
+    - uses: php-actions/phpunit@v9
+    - name: PHPUnit tests
+      uses: php-actions/phpunit@v9
+      with:
+        configuration: code/phpunit.xml.dist
+        memory_limit: 256M
