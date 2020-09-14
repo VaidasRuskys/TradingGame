@@ -1,0 +1,17 @@
+on: push
+name: Build
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: "docker://composer:latest"
+      with:
+        args: "composer install -d ./code"
+    - name: PHPUnit tests
+      uses: php-actions/phpunit@v9
+      with:
+        configuration: ./code/phpunit.xml.dist
+        bootstrap: ./code/vendor/autoload.php
+        memory_limit: 256M
