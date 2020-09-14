@@ -6,9 +6,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: php-actions/composer@v1 # or alternative dependency management
+    - uses: "docker://composer:latest"
       with:
-        args: working-dir /code
+        args: "composer install -d /code"
     - uses: php-actions/phpunit@v9
     - name: PHPUnit tests
       uses: php-actions/phpunit@v9
