@@ -8,10 +8,10 @@ jobs:
     - uses: actions/checkout@v2
     - uses: php-actions/composer@v1 # or alternative dependency management
       with:
-        args: --working-dir code
+        args: --working-dir /code
     - uses: php-actions/phpunit@v9
     - name: PHPUnit tests
       uses: php-actions/phpunit@v9
       with:
-        configuration: code/phpunit.xml.dist
+        configuration: /code/phpunit.xml.dist
         memory_limit: 256M
