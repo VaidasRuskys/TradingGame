@@ -13,4 +13,5 @@ jobs:
       uses: php-actions/phpunit@v9
       with:
         configuration: ./code/phpunit.xml.dist
+        bootstrap: ./code/vendor/autoload.php'
         memory_limit: 256M
