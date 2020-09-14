@@ -9,7 +9,6 @@ jobs:
     - uses: "docker://composer:latest"
       with:
         args: "composer install -d ./code"
-    - uses: php-actions/phpunit@v9
     - name: PHPUnit tests
       uses: php-actions/phpunit@v9
       with:
