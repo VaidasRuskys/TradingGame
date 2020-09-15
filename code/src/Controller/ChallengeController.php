@@ -92,5 +92,6 @@ class ChallengeController extends AbstractController
         }
 
         return new RedirectResponse("/challenge");
+
     }
 }
