@@ -17,5 +17,5 @@ jobs:
         memory_limit: 256M
     - name: PHP code sniffer
       uses: "docker://composer:latest"
-        with:
-          args: "./vendor/bin/phpcs"
+      with:
+        args: "./vendor/bin/phpcs"
