@@ -45,5 +45,4 @@ class FinnhubStockPriceProvider implements StockPriceProviderInterface
             return null;
         }
     }
-
 }

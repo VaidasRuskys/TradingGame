@@ -69,7 +69,7 @@ class ChallengeController extends AbstractController
                 $dayChallenge = $challengeProvider->getDayChallenge();
 
                 if ($dayChallengeId !== $dayChallenge['id']) {
-                   throw new \Exception('Challenge not active');
+                    throw new \Exception('Challenge not active');
                 }
 
                 $challenge = new Chalange();
@@ -86,10 +86,7 @@ class ChallengeController extends AbstractController
                 $entityManager->flush($challenge);
             } catch (UniqueConstraintViolationException $exception) {
             } catch (\Exception $exception) {
-
             }
-
-
         } else {
             throw new NotFoundHttpException('User not found');
         }
