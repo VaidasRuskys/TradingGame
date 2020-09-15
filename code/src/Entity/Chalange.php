@@ -4,8 +4,15 @@ namespace App\Entity;
 
 use App\Repository\ChalangeRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\UniqueConstraint;
 
 /**
+ *
+ * @ORM\Table(
+ *     uniqueConstraints={
+ *        @UniqueConstraint(name="user_unique_day_challenge",
+ *            columns={"user", "day_challenge_id"})
+ *    })
  * @ORM\Entity(repositoryClass=ChalangeRepository::class)
  */
 class Chalange
@@ -16,6 +23,11 @@ class Chalange
      * @ORM\Column(type="integer")
      */
     private $id;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $dayChallengeId;
 
     /**
      * @ORM\Column(type="string", length=50)
@@ -45,6 +57,11 @@ class Chalange
     /**
      * @ORM\Column(type="string", length=50)
      */
+    private $action;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
     private $result;
 
     /**
@@ -55,6 +72,18 @@ class Chalange
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getDayChallengeId()
+    {
+        return $this->dayChallengeId;
+    }
+
+    public function setDayChallengeId($dayChallengeId): self
+    {
+        $this->dayChallengeId = $dayChallengeId;
+
+        return $this;
     }
 
     public function getStock(): ?string
@@ -113,6 +142,18 @@ class Chalange
     public function setEndTime(?\DateTimeInterface $endTime): self
     {
         $this->endTime = $endTime;
+
+        return $this;
+    }
+
+    public function getAction()
+    {
+        return $this->action;
+    }
+
+    public function setAction($action): self
+    {
+        $this->action = $action;
 
         return $this;
     }

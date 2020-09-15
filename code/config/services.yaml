@@ -34,3 +34,6 @@ services:
         class: App\StockPrice\Providers\FinnhubStockPriceProvider
         arguments:
             - '%env(resolve:FINNHUB_TOKEN)%'
+
+    Doctrine\ORM\EntityManager:
+        alias: doctrine.orm.default_entity_manager
