@@ -15,3 +15,7 @@ jobs:
         configuration: ./code/phpunit.xml.dist
         bootstrap: ./code/vendor/autoload.php
         memory_limit: 256M
+    - name: PHP code sniffer
+      uses: "docker://composer:latest"
+        with:
+          args: "./vendor/bin/phpcs"
