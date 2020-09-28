@@ -19,6 +19,21 @@ class ChalangeRepository extends ServiceEntityRepository
         parent::__construct($registry, Chalange::class);
     }
 
+    /**
+     * @param int $limit
+     * @return Chalange[]
+     */
+    public function getUnresolvedChallenges(int $limit)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.result IS NULL')
+            ->orderBy('c.atTime', 'ASC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Chalange[] Returns an array of Chalange objects
     //  */
