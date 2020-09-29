@@ -68,7 +68,7 @@ class ChallengeController extends AbstractController
             try {
                 $dayChallenge = $challengeProvider->getDayChallenge();
 
-                if ($dayChallengeId !== $dayChallenge['id']) {
+                if ($dayChallengeId != $dayChallenge['id']) {
                     throw new \Exception('Challenge not active');
                 }
 

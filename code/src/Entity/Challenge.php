@@ -56,7 +56,7 @@ class Challenge
 
     /**
      * TODO allow only two values
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=50, columnDefinition="ENUM('buy', 'sell')"))
      */
     private $action;
 
