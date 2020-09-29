@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Chalange;
+use App\Entity\Challenge;
 use App\Entity\User;
 use App\Service\Challenge\DayChallengeProvider;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
@@ -72,7 +72,7 @@ class ChallengeController extends AbstractController
                     throw new \Exception('Challenge not active');
                 }
 
-                $challenge = new Chalange();
+                $challenge = new Challenge();
                 $challenge
                     ->setDayChallengeId($dayChallenge['id'])
                     ->setUser($user->getId())

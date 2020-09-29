@@ -2,7 +2,7 @@
 
 namespace App\Command;
 
-use App\Entity\Chalange;
+use App\Entity\Challenge;
 use App\Service\Challenge\ChallengeResultResolver;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Console\Command\Command;
@@ -22,7 +22,7 @@ class CalculateChallengeResultsCommand extends Command
     public function __construct(EntityManager $entityManager, ChallengeResultResolver $challengeResultResolver)
     {
         $this->entityManager = $entityManager;
-        $this->challengeRepo = $this->entityManager->getRepository(Chalange::class);
+        $this->challengeRepo = $this->entityManager->getRepository(Challenge::class);
         $this->challengeResolver = $challengeResultResolver;
 
         parent::__construct();
@@ -36,7 +36,7 @@ class CalculateChallengeResultsCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $challenges = $this->challengeRepo->getUnresolvedChallenges(10);
-        /** @var Chalange $challenge */
+        /** @var Challenge $challenge */
         foreach ($challenges as $challenge) {
             $isResolved = $this->challengeResolver->resolve($challenge);
             if ($isResolved) {

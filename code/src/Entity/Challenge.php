@@ -15,7 +15,7 @@ use Doctrine\ORM\Mapping\UniqueConstraint;
  *    })
  * @ORM\Entity(repositoryClass=ChalangeRepository::class)
  */
-class Chalange
+class Challenge
 {
     /**
      * @ORM\Id
@@ -55,6 +55,7 @@ class Chalange
     private $endTime;
 
     /**
+     * TODO allow only two values
      * @ORM\Column(type="string", length=50)
      */
     private $action;

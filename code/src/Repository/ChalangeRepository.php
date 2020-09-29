@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Chalange;
+use App\Entity\Challenge;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Chalange|null find($id, $lockMode = null, $lockVersion = null)
- * @method Chalange|null findOneBy(array $criteria, array $orderBy = null)
- * @method Chalange[]    findAll()
- * @method Chalange[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Challenge|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Challenge|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Challenge[]    findAll()
+ * @method Challenge[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class ChalangeRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Chalange::class);
+        parent::__construct($registry, Challenge::class);
     }
 
     /**
      * @param int $limit
-     * @return Chalange[]
+     * @return Challenge[]
      */
     public function getUnresolvedChallenges(int $limit)
     {
@@ -35,7 +35,7 @@ class ChalangeRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Chalange[] Returns an array of Chalange objects
+    //  * @return Challenge[] Returns an array of Challenge objects
     //  */
     /*
     public function findByExampleField($value)
@@ -52,7 +52,7 @@ class ChalangeRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Chalange
+    public function findOneBySomeField($value): ?Challenge
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.exampleField = :val')

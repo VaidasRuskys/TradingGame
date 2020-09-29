@@ -2,7 +2,7 @@
 
 namespace App\Service\Challenge;
 
-use App\Entity\Chalange;
+use App\Entity\Challenge;
 use App\StockPrice\Providers\FinnhubStockPriceProvider;
 use Doctrine\ORM\EntityManager;
 
@@ -18,7 +18,7 @@ class ChallengeResultResolver
         $this->stockPriceProvider = $stockPriceProvider;
     }
 
-    public function resolve(Chalange $challenge): bool
+    public function resolve(Challenge $challenge): bool
     {
         $result = null;
         $price = $this->stockPriceProvider->getPrice($challenge->getStock());
