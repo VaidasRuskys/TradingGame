@@ -55,7 +55,6 @@ class Challenge
     private $endTime;
 
     /**
-     * TODO allow only two values
      * @ORM\Column(type="string", length=50, columnDefinition="ENUM('buy', 'sell')"))
      */
     private $action;
