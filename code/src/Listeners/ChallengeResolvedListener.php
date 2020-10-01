@@ -8,6 +8,5 @@ class ChallengeResolvedListener
 {
     public function onChallengeResolved(ChallengeResolvedEvent $challengeResolvedEvent)
     {
-
     }
 }
