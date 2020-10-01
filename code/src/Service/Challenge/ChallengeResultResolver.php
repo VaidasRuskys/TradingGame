@@ -3,8 +3,10 @@
 namespace App\Service\Challenge;
 
 use App\Entity\Challenge;
+use App\Event\ChallengeResolvedEvent;
 use App\StockPrice\Providers\FinnhubStockPriceProvider;
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class ChallengeResultResolver
 {
@@ -12,10 +14,16 @@ class ChallengeResultResolver
 
     private $stockPriceProvider;
 
-    public function __construct(EntityManager $entityManager, FinnhubStockPriceProvider $stockPriceProvider)
-    {
+    private $eventDispatcher;
+
+    public function __construct(
+        EntityManager $entityManager,
+        FinnhubStockPriceProvider $stockPriceProvider,
+        EventDispatcherInterface $eventDispatcher
+    ) {
         $this->entityManager = $entityManager;
         $this->stockPriceProvider = $stockPriceProvider;
+        $this->eventDispatcher = $eventDispatcher;
     }
 
     public function resolve(Challenge $challenge): bool
@@ -41,7 +49,8 @@ class ChallengeResultResolver
             ->setEndPrice($price)
         ;
 
-        //todo Create event
+        $challengeResolvedEvent = new ChallengeResolvedEvent($challenge);
+        $this->eventDispatcher->dispatch($challengeResolvedEvent, ChallengeResolvedEvent::NAME);
 
         try {
             $this->entityManager->persist($challenge);

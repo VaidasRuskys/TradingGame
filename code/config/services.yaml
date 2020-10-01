@@ -37,3 +37,7 @@ services:
 
     Doctrine\ORM\EntityManager:
         alias: doctrine.orm.default_entity_manager
+
+    App\Listeners\ChallengeResolvedListener:
+        tags:
+            - {name: kernel.event_listener, event: challenge.resolved}
