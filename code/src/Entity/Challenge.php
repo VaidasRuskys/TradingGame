@@ -55,7 +55,7 @@ class Challenge
     private $endTime;
 
     /**
-     * @ORM\Column(type="string", length=50, columnDefinition="ENUM('buy', 'sell')"))
+     * @ORM\Column(type="string", length=50)
      */
     private $action;
 
