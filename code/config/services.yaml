@@ -41,3 +41,8 @@ services:
     App\Listeners\ChallengeResolvedListener:
         tags:
             - {name: kernel.event_listener, event: challenge.resolved}
+
+    App\Service\Challenge\DayChallengeProvider:
+        class: App\Service\Challenge\DayChallengeProvider
+        calls:
+            - [addLoader, ['@App\Service\Challenge\Loader\PriceLoader']]

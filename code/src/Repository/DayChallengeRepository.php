@@ -19,6 +19,17 @@ class DayChallengeRepository extends ServiceEntityRepository
         parent::__construct($registry, DayChallenge::class);
     }
 
+    public function getCurrentDayChallenge(): ?DayChallenge
+    {
+        return $this->createQueryBuilder('dc')
+            ->andWhere('dc.startTime < :now')
+            ->andWhere('dc.endTime > :now')
+            ->setParameter('now', new \DateTime())
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
+
     // /**
     //  * @return DayChallenge[] Returns an array of DayChallenge objects
     //  */

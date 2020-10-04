@@ -29,12 +29,12 @@ class ChallengeController extends AbstractController
      */
     public function index(DayChallengeProvider $challengeProvider)
     {
-        $data = $challengeProvider->getDayChallenge();
+        $dayChallenge = $challengeProvider->getDayChallenge();
 
         return $this->render('challenge/index.html.twig', [
-            'dayChallengeId' =>  $data['id'],
-            'stock' => $data['stock'],
-            'price' => $data['price'],
+            'dayChallengeId' =>  $dayChallenge->getId(),
+            'stock' => $dayChallenge->getStock(),
+            'price' => $dayChallenge->getPrice(),
         ]);
     }
 
@@ -73,18 +73,18 @@ class ChallengeController extends AbstractController
             try {
                 $dayChallenge = $challengeProvider->getDayChallenge();
 
-                if ($dayChallengeId != $dayChallenge['id']) {
+                if ($dayChallengeId != $dayChallenge->getId()) {
                     $logger->error('Challenge not active');
                     throw new \Exception('Challenge not active');
                 }
 
                 $challenge = new Challenge();
                 $challenge
-                    ->setDayChallengeId($dayChallenge['id'])
+                    ->setDayChallengeId($dayChallenge->getId())
                     ->setUser($user->getId())
-                    ->setAtPrice($dayChallenge['price'])
+                    ->setAtPrice($dayChallenge->getPrice())
                     ->setAtTime(new \DateTime())
-                    ->setStock($dayChallenge['stock'])
+                    ->setStock($dayChallenge->getPrice())
                     ->setAction($action)
                 ;
 

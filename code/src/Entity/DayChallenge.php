@@ -37,6 +37,9 @@ class DayChallenge
      */
     private $chainId;
 
+    /** @var float|null */
+    private $price;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +89,18 @@ class DayChallenge
     public function setChainId(int $chainId): self
     {
         $this->chainId = $chainId;
+
+        return $this;
+    }
+
+    public function getPrice(): ?float
+    {
+        return $this->price;
+    }
+
+    public function setPrice(float $price): self
+    {
+        $this->price = $price;
 
         return $this;
     }
