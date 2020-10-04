@@ -26,7 +26,7 @@ class DayChallengeProvider
     public function getDayChallenge(): DayChallenge
     {
         $challenge = $this->dayChallengeRepository->getCurrentDayChallenge();
-        foreach($this->loaders as $loader) {
+        foreach ($this->loaders as $loader) {
             $loader->load($challenge);
         }
 
